@@ -2,11 +2,41 @@
 
 **A queue acknowledgment is not a payment outcome.**
 
-A small, reproducible Python laboratory exploring ambiguous payment outcomes, duplicate delivery, idempotency-key retention, competing workers, transactional outbox recovery, and out-of-order webhooks.
+A reproducible engineering laboratory investigating ambiguous payment
+outcomes, duplicate delivery, idempotency, concurrent workers,
+transactional outbox recovery, and reconciliation.
 
-> **Safety and provenance:** Everything here is simulated: fake provider, fake queue, synthetic payment references, local SQLite database. No live payments, payment credentials, real customer data, AWS account access, or proprietary implementations. The project is an independent architectural experiment, **not** a reconstruction of any employer's payment systems and **not** a production-ready payment processor.
+The project combines two independently testable layers:
 
-## Reproduce
+- **Python + SQLite:** 18 deterministic tests using a synthetic payment
+  provider, controlled failures, and explicit business-operation state.
+- **AWS Emulator 1.0.598:** local integration experiments exercising
+  SQS, Lambda, and DynamoDB APIs with pinned execution evidence.
+
+## Validated experiments
+
+| Experiment | What was tested |
+|---|---|
+| P01 | SQS-triggered Lambda processing, injected failure, and DynamoDB reconciliation |
+| P02 | SQS FIFO deduplication and simulated provider-key expiration |
+| P03 | Concurrent conditional DynamoDB claims |
+| P04 | Transactional outbox recovery and an independently committed synthetic provider |
+| P05 | Duplicate and late events without incorrect state regression |
+
+P01 exercises **SQS → Lambda → DynamoDB**.
+P02–P05 use host-side Python and AWS CLI against AWS Emulator;
+they do not invoke Lambda.
+
+The repository includes source code, repeatable tests, an emulator
+image lock, JSON evidence, execution manifests, and SHA-256 checksums.
+
+> **Safety and provenance:** All payment operations, identities,
+> amounts, and provider records are synthetic. No live AWS account,
+> real customer information, payment credentials, or employer-specific
+> implementations are involved. This is an independent engineering
+> laboratory, not a production payment processor.
+
+## Reproduce the Python baseline
 
 Requirements: Python 3.10+; standard library only; no AWS account or GPU required.
 
@@ -65,7 +95,7 @@ Business request -> SQLite: operation + outbox (single transaction)
                              pre-verified events
 ```
 
-A real implementation on AWS might replace the queue/worker with SQS + Lambda and use a durable DB with explicit concurrency, outbox relay, partial batch failure handling, verified provider webhooks and operational reconciliation. **This lab does not simulate the full behavior of AWS services, real provider APIs, distributed transactions or network concurrency.**
+A real implementation on AWS might replace the queue/worker with SQS + Lambda and use a durable DB with explicit concurrency, outbox relay, partial batch failure handling, verified provider webhooks and operational reconciliation. **The Python/SQLite baseline is a simulation. Separate AWS Emulator experiments exercise selected SQS, Lambda, and DynamoDB APIs locally. They do not establish production AWS behavior, real payment-provider guarantees, distributed transaction atomicity, or network-failure resilience.**
 
 ### Explicit contracts
 
