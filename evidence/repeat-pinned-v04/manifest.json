@@ -1,0 +1,43 @@
+{
+  "image_lock": {
+    "image_id": "sha256:ca6f22a82c0873c1ca86656a37a91a0dd9623c01bfb9536e28b367f026938402",
+    "version": "1.0.598",
+    "commit": "fc05151cc5015eb457b31a79871539af51fb9fdd",
+    "architecture": "arm64"
+  },
+  "aws_cli": "aws-cli/2.42.2 Python/3.15.2 Darwin/25.6.0 source/arm64",
+  "python": "3.15.2",
+  "source_sha256": {
+    "aws-emulator/Dockerfile": "11ee9708ca8f38caf083b2a88a71b02bb631d5d1a46bd5606890866ad0700f50",
+    "aws-emulator/external_provider.py": "e73494c28e6507e0408d18d525528f01093c4ac151aaecb7cbbd50d6c8812be4",
+    "aws-emulator/image-lock.json": "429ca5bd50aa2f3bd0b2aafa7fb7f62e2d1549888098f514bce86440b7e13fdb",
+    "aws-emulator/inspect_lambda_env.sh": "be512a32951d0ec54db85cdf6eb11a0068320430f47f29fb12d4a46f19786f18",
+    "aws-emulator/lambda_smoke.py": "29c400f0d5782c45c22cf9e80e7891232a9a000701a3392df64dbedb58558b06",
+    "aws-emulator/lambda_smoke.sh": "63172c7e2b546f2505379b183b080206503d5821c79b790c64035050b48c3621",
+    "aws-emulator/lambda_sqs_probe.py": "43b12aba9ee40f6d9ab1ef502194bf850190d353b1eb410559d95f1d53df10bc",
+    "aws-emulator/lambda_sqs_probe.sh": "9be084f9873a0d742ac66ba7d3df268a3251b547b4c1918951bd3161df30325a",
+    "aws-emulator/p01_handler.py": "4416dd219cc5d90dcff40c1021341cbddde109de8aea4545e7a2684fdf32e064",
+    "aws-emulator/p01_run.sh": "22f8eb2fbc334f5d3c2fe4b99ed866167a0f73e9fa6d8700cf26d5a732c1ff6c",
+    "aws-emulator/p02_p05_run.py": "ba1b0991c5511ef01ae6196cbe620f970a6732b02a0315327c1a67f7675d8355",
+    "aws-emulator/p04_external.py": "4436e797368586a2b58cf0dafdfb4bfa36e5d4e032af27feaa7ff71595916713",
+    "aws-emulator/repeat_pinned.py": "0084287c760bafb0a5fd6be375b2dde08edc95d1bce1615aa45fae9292446ed4",
+    "aws-emulator/smoke.sh": "3cb50527ec57e885fe30d30154fa7a3b57373305cab2d1ff367e497d9c094cc0"
+  },
+  "runs": [
+    {
+      "scenario_group": "P01",
+      "exit_code": 0,
+      "version": "Version: 1.0.598\nRelease date: 2026.11.24\nCommit: fc05151cc5015eb457b31a79871539af51fb9fdd",
+      "python_optimization_enabled": true
+    },
+    {
+      "scenario_group": "P02-P05",
+      "exit_code": 0,
+      "version": "Version: 1.0.598\nRelease date: 2026.11.24\nCommit: fc05151cc5015eb457b31a79871539af51fb9fdd",
+      "python_optimization_enabled": true,
+      "evidence_directories": [
+        "reports/aws-emulator-p02-p05-a3a51d94"
+      ]
+    }
+  ]
+}

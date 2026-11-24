@@ -1,0 +1,110 @@
+[
+  {
+    "action": "charge",
+    "operation_id": "synthetic-p04-outbox",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-outbox",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-outbox",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-outbox",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-before_provider",
+    "response": {
+      "charge_count": 0,
+      "operation_id": "synthetic-p04-before_provider",
+      "amount_minor": null
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-before_provider",
+    "response": {
+      "charge_count": 0,
+      "operation_id": "synthetic-p04-before_provider",
+      "amount_minor": null
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-before_provider",
+    "response": {
+      "charge_count": 0,
+      "operation_id": "synthetic-p04-before_provider",
+      "amount_minor": null
+    }
+  },
+  {
+    "action": "charge",
+    "operation_id": "synthetic-p04-before_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-before_local_result",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-before_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-before_local_result",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-before_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-before_local_result",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-before_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-before_local_result",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "charge",
+    "operation_id": "synthetic-p04-after_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-after_local_result",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-after_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-after_local_result",
+      "amount_minor": 1000
+    }
+  },
+  {
+    "action": "lookup",
+    "operation_id": "synthetic-p04-after_local_result",
+    "response": {
+      "charge_count": 1,
+      "operation_id": "synthetic-p04-after_local_result",
+      "amount_minor": 1000
+    }
+  }
+]

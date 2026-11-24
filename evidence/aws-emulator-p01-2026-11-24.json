@@ -1,0 +1,35 @@
+{
+  "status": "observed_local_emulator_run",
+  "date": "2026-11-24",
+  "aws_emulator": {
+    "version": "1.0.598",
+    "release_date": "2026.11.24",
+    "commit": "fc05151cc5015eb457b31a79871539af51fb9fdd",
+    "platform": "macOS Apple Silicon, Docker",
+    "telemetry": "off",
+    "account": "000000000000"
+  },
+  "scenario": "P01_lost_acknowledgment",
+  "service_path": ["SQS", "Lambda event source mapping", "DynamoDB"],
+  "injection": "The Lambda handler raised an error after writing to a synthetic DynamoDB charge ledger on its first processing attempt.",
+  "input": {
+    "naive_sqs_messages_sent": 1,
+    "guarded_sqs_messages_sent": 1,
+    "operation_ids": ["synthetic-naive", "synthetic-guarded"],
+    "amount_minor": 1000
+  },
+  "observed": {
+    "naive_lambda_attempts": 2,
+    "naive_synthetic_charges": 2,
+    "guarded_lambda_attempts": 2,
+    "guarded_synthetic_charges": 1,
+    "guarded_final_state": "SUCCEEDED"
+  },
+  "limitations": [
+    "The ledger is a synthetic DynamoDB item, not an independent payment provider or bank ledger.",
+    "The lost acknowledgment is an injected handler failure, not a measured network failure.",
+    "This is one local run of AWS Emulator, not a validation against production AWS.",
+    "P02 through P05 were not run on AWS Emulator."
+  ],
+  "private_or_live_data": false
+}

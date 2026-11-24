@@ -1,0 +1,10 @@
+emulator_account=000000000000
+naive_attempts=2
+naive_charges=2
+guarded_attempts=2
+guarded_charges=1
+guarded_status=SUCCEEDED
+P01 observed through SQS -> Lambda -> DynamoDB with a synthetic ledger.
+recovery_attempts=2
+recovery_charges=1
+recovery_status=SUCCEEDED

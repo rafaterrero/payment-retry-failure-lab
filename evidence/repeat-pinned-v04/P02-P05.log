@@ -1,0 +1,21 @@
+P02: duplicate suppressed; waiting for real FIFO expiry while running P03–P05
+P03 passed: one conditional claim won, one rejected
+P04 passed: independent provider and local-state fault cases
+P05 passed: duplicate ignored and late PROCESSING preserved SUCCEEDED
+P02: real-time FIFO expiry check in 282 seconds
+P02: real-time FIFO expiry check in 262 seconds
+P02: real-time FIFO expiry check in 242 seconds
+P02: real-time FIFO expiry check in 222 seconds
+P02: real-time FIFO expiry check in 202 seconds
+P02: real-time FIFO expiry check in 182 seconds
+P02: real-time FIFO expiry check in 162 seconds
+P02: real-time FIFO expiry check in 142 seconds
+P02: real-time FIFO expiry check in 122 seconds
+P02: real-time FIFO expiry check in 102 seconds
+P02: real-time FIFO expiry check in 82 seconds
+P02: real-time FIFO expiry check in 62 seconds
+P02: real-time FIFO expiry check in 42 seconds
+P02: real-time FIFO expiry check in 22 seconds
+P02: real-time FIFO expiry check in 2 seconds
+P02 passed: same FIFO deduplication ID delivered after 305.0 seconds
+Evidence: reports/aws-emulator-p02-p05-a3a51d94

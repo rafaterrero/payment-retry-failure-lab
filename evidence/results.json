@@ -1,0 +1,64 @@
+{
+  "aws_or_payment_api_calls": 0,
+  "data": "synthetic",
+  "project": "Payment Retry Failure Lab",
+  "scenarios": {
+    "P01_lost_ack": {
+      "guarded": {
+        "charges": 1,
+        "first": "UNKNOWN",
+        "redelivery": "RECONCILED_SUCCEEDED",
+        "state": "SUCCEEDED"
+      },
+      "naive": {
+        "charges": 2,
+        "first": "RETRY_MESSAGE",
+        "redelivery": "SUCCEEDED"
+      }
+    },
+    "P02_key_expiry": {
+      "fifo_sends_accepted": [
+        true,
+        false,
+        true
+      ],
+      "guarded": {
+        "charges": 1,
+        "first": "SUCCEEDED",
+        "replay": "ALREADY_SUCCEEDED"
+      },
+      "naive": {
+        "charges": 2
+      },
+      "note": "Two separate synthetic expiry windows; neither models a provider or SQS service end-to-end",
+      "provider_replay_after_seconds": 121,
+      "simulated_fifo_dedup_window_seconds": 300,
+      "simulated_provider_cache_ttl_seconds": 120
+    },
+    "P03_claim_race": {
+      "charges": 1,
+      "first_claim": "CALL_PROVIDER",
+      "note": "sequential competing claims; SQLite atomicity separately covered by tests",
+      "second_claim": "IN_PROGRESS",
+      "state": "SUCCEEDED"
+    },
+    "P04_outbox_delivery": {
+      "charges": 1,
+      "messages_after_crash": 1,
+      "messages_after_recovery": 2,
+      "outcomes": [
+        "SUCCEEDED",
+        "ALREADY_SUCCEEDED"
+      ],
+      "pending_outbox": 0
+    },
+    "P05_event_order": {
+      "event_new_flags": [
+        true,
+        false,
+        true
+      ],
+      "final_state": "SUCCEEDED"
+    }
+  }
+}

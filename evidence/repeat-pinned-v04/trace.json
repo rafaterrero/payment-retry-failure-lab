@@ -1,0 +1,1284 @@
+[
+  {
+    "service": "sts",
+    "operation": "get-caller-identity",
+    "input": {},
+    "exit_code": 0,
+    "output": "{\n    \"UserId\": \"AIDAH5I7GEMO7ADXNFAZU\",\n    \"Account\": \"000000000000\",\n    \"Arn\": \"arn:aws:iam::000000000000:user/emulator\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "create-table",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "attribute_definitions": [
+        {
+          "AttributeName": "pk",
+          "AttributeType": "S"
+        }
+      ],
+      "key_schema": [
+        {
+          "AttributeName": "pk",
+          "KeyType": "HASH"
+        }
+      ],
+      "billing_mode": "PAY_PER_REQUEST"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"TableDescription\": {\n        \"AttributeDefinitions\": [\n            {\n                \"AttributeName\": \"pk\",\n                \"AttributeType\": \"S\"\n            }\n        ],\n        \"TableName\": \"synthetic_retry_c7754920\",\n        \"KeySchema\": [\n            {\n                \"AttributeName\": \"pk\",\n                \"KeyType\": \"HASH\"\n            }\n        ],\n        \"TableStatus\": \"CREATING\",\n        \"CreationDateTime\": \"2026-11-24T11:18:43.978000+01:00\",\n        \"ProvisionedThroughput\": {\n            \"NumberOfDecreasesToday\": 0,\n            \"ReadCapacityUnits\": 0,\n            \"WriteCapacityUnits\": 0\n        },\n        \"TableSizeBytes\": 0,\n        \"ItemCount\": 0,\n        \"TableArn\": \"arn:aws:dynamodb:us-east-1:000000000000:table/synthetic_retry_c7754920\",\n        \"TableId\": \"385c6035-f2cc-4269-b18f-f318b4f96511\",\n        \"BillingModeSummary\": {\n            \"BillingMode\": \"PAY_PER_REQUEST\",\n            \"LastUpdateToPayPerRequestDateTime\": \"2026-11-24T11:18:43.978000+01:00\"\n        },\n        \"DeletionProtectionEnabled\": false,\n        \"WarmThroughput\": {\n            \"ReadUnitsPerSecond\": 12000,\n            \"WriteUnitsPerSecond\": 4000,\n            \"Status\": \"ACTIVE\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "describe-table",
+    "input": {
+      "table_name": "synthetic_retry_c7754920"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Table\": {\n        \"AttributeDefinitions\": [\n            {\n                \"AttributeName\": \"pk\",\n                \"AttributeType\": \"S\"\n            }\n        ],\n        \"TableName\": \"synthetic_retry_c7754920\",\n        \"KeySchema\": [\n            {\n                \"AttributeName\": \"pk\",\n                \"KeyType\": \"HASH\"\n            }\n        ],\n        \"TableStatus\": \"ACTIVE\",\n        \"CreationDateTime\": \"2026-11-24T11:18:43.978000+01:00\",\n        \"ProvisionedThroughput\": {\n            \"NumberOfDecreasesToday\": 0,\n            \"ReadCapacityUnits\": 0,\n            \"WriteCapacityUnits\": 0\n        },\n        \"TableSizeBytes\": 0,\n        \"ItemCount\": 0,\n        \"TableArn\": \"arn:aws:dynamodb:us-east-1:000000000000:table/synthetic_retry_c7754920\",\n        \"TableId\": \"385c6035-f2cc-4269-b18f-f318b4f96511\",\n        \"BillingModeSummary\": {\n            \"BillingMode\": \"PAY_PER_REQUEST\",\n            \"LastUpdateToPayPerRequestDateTime\": \"2026-11-24T11:18:43.978000+01:00\"\n        },\n        \"DeletionProtectionEnabled\": false,\n        \"WarmThroughput\": {\n            \"ReadUnitsPerSecond\": 12000,\n            \"WriteUnitsPerSecond\": 4000,\n            \"Status\": \"ACTIVE\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "create-queue",
+    "input": {
+      "queue_name": "synthetic-fifo-c7754920.fifo",
+      "attributes": {
+        "FifoQueue": "true",
+        "ContentBasedDeduplication": "false"
+      }
+    },
+    "exit_code": 0,
+    "output": "{\n    \"QueueUrl\": \"https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "send-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "message_body": "synthetic-p02",
+      "message_group_id": "synthetic-group",
+      "message_deduplication_id": "synthetic-stable-key"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"MD5OfMessageBody\": \"368c4840b316f0ed3cb8b03bbffc8fd5\",\n    \"MessageId\": \"e6231283-f59c-411e-8fb2-f4ade9cbbd4e\",\n    \"SequenceNumber\": \"10000000000000000001\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "receive-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "wait_time_seconds": 1,
+      "max_number_of_messages": 1
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Messages\": [\n        {\n            \"MessageId\": \"e6231283-f59c-411e-8fb2-f4ade9cbbd4e\",\n            \"ReceiptHandle\": \"ZDczYjM4ZTItZGZjYS00NmM5LWJlMGMtN2M3NWZlMzVmZTQ0IDc1ODg1OGNjLThkYmYtNDZiYS04ZDhhLTU1NmM2MzMyNmYxNiBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpYy1maWZvLWM3NzU0OTIwLmZpZm8=\",\n            \"MD5OfBody\": \"368c4840b316f0ed3cb8b03bbffc8fd5\",\n            \"Body\": \"synthetic-p02\"\n        }\n    ]\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "delete-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "receipt_handle": "ZDczYjM4ZTItZGZjYS00NmM5LWJlMGMtN2M3NWZlMzVmZTQ0IDc1ODg1OGNjLThkYmYtNDZiYS04ZDhhLTU1NmM2MzMyNmYxNiBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpYy1maWZvLWM3NzU0OTIwLmZpZm8="
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "send-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "message_body": "synthetic-p02",
+      "message_group_id": "synthetic-group",
+      "message_deduplication_id": "synthetic-stable-key"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"MD5OfMessageBody\": \"368c4840b316f0ed3cb8b03bbffc8fd5\",\n    \"MessageId\": \"e6231283-f59c-411e-8fb2-f4ade9cbbd4e\",\n    \"SequenceNumber\": \"10000000000000000001\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "receive-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "wait_time_seconds": 2,
+      "max_number_of_messages": 1
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "put-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "item": {
+        "pk": {
+          "S": "P02-operation"
+        },
+        "status": {
+          "S": "SUCCEEDED"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P02-operation"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        },\n        \"pk\": {\n            \"S\": \"P02-operation\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "put-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "item": {
+        "pk": {
+          "S": "P03-operation"
+        },
+        "status": {
+          "S": "PENDING"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P03-operation"
+        }
+      },
+      "update_expression": "SET #s = :claimed",
+      "condition_expression": "#s = :pending",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":claimed": {
+          "S": "IN_FLIGHT"
+        },
+        ":pending": {
+          "S": "PENDING"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P03-operation"
+        }
+      },
+      "update_expression": "SET #s = :claimed",
+      "condition_expression": "#s = :pending",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":claimed": {
+          "S": "IN_FLIGHT"
+        },
+        ":pending": {
+          "S": "PENDING"
+        }
+      }
+    },
+    "exit_code": 254,
+    "output": "",
+    "error": "\naws: [ERROR]: An error occurred (ConditionalCheckFailedException) when calling the UpdateItem operation (reached max retries: 0): The conditional request failed\n"
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P03-operation"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"P03-operation\"\n        },\n        \"status\": {\n            \"S\": \"IN_FLIGHT\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-conflict"
+              },
+              "status": {
+                "S": "PENDING"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-conflict-outbox"
+              },
+              "status": {
+                "S": "UNSENT"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-rollback"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-conflict"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        }
+      ]
+    },
+    "exit_code": 254,
+    "output": "",
+    "error": "\naws: [ERROR]: An error occurred (TransactionCanceledException) when calling the TransactWriteItems operation (reached max retries: 0): Transaction cancelled, please refer cancellation reasons for specific reasons [None, ConditionalCheckFailed]\n\nAdditional error details:\nCancellationReasons: <complex value>\nUse \"--cli-error-format json\" or another error format to see the full details.\n"
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-rollback"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "create-queue",
+    "input": {
+      "queue_name": "synthetic_retry_c7754920-external-outbox"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"QueueUrl\": \"https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-outbox"
+              },
+              "status": {
+                "S": "PENDING"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-outbox-outbox"
+              },
+              "status": {
+                "S": "UNSENT"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox-outbox"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"UNSENT\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-outbox-outbox\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "send-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox",
+      "message_body": "synthetic-p04-outbox"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"MD5OfMessageBody\": \"8e1b7767791b260964a89ab9f1f74964\",\n    \"MessageId\": \"d198e25c-d848-4329-a0a2-c17a7002223a\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox-outbox"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"UNSENT\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-outbox-outbox\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "send-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox",
+      "message_body": "synthetic-p04-outbox"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"MD5OfMessageBody\": \"8e1b7767791b260964a89ab9f1f74964\",\n    \"MessageId\": \"b34b132d-e1ff-4d17-bca4-4e09f4aeaede\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox-outbox"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "UNSENT"
+        },
+        ":new": {
+          "S": "SENT"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "receive-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox",
+      "wait_time_seconds": 1,
+      "max_number_of_messages": 1
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Messages\": [\n        {\n            \"MessageId\": \"d198e25c-d848-4329-a0a2-c17a7002223a\",\n            \"ReceiptHandle\": \"ZjQ1NjdlMTEtNmFmZi00OTY1LTg1NDItMDYzY2VhNzExYTI2IDAzZmI4ODcyLTM1MGItNGVlMC1hOGM4LWVmZjg4MDUxOTVhNyBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpY19yZXRyeV9jNzc1NDkyMC1leHRlcm5hbC1vdXRib3g=\",\n            \"MD5OfBody\": \"8e1b7767791b260964a89ab9f1f74964\",\n            \"Body\": \"synthetic-p04-outbox\"\n        }\n    ]\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"PENDING\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-outbox\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "PENDING"
+        },
+        ":new": {
+          "S": "UNKNOWN"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "UNKNOWN"
+        },
+        ":new": {
+          "S": "SUCCEEDED"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "delete-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox",
+      "receipt_handle": "ZjQ1NjdlMTEtNmFmZi00OTY1LTg1NDItMDYzY2VhNzExYTI2IDAzZmI4ODcyLTM1MGItNGVlMC1hOGM4LWVmZjg4MDUxOTVhNyBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpY19yZXRyeV9jNzc1NDkyMC1leHRlcm5hbC1vdXRib3g="
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "receive-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox",
+      "wait_time_seconds": 1,
+      "max_number_of_messages": 1
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Messages\": [\n        {\n            \"MessageId\": \"b34b132d-e1ff-4d17-bca4-4e09f4aeaede\",\n            \"ReceiptHandle\": \"ZjQ1NjdlMTEtNmFmZi00OTY1LTg1NDItMDYzY2VhNzExYTI2IDA3NGNjNWIxLTFlMjAtNGNlNC1hMzE2LWUxODk1OWQxZGJhZCBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpY19yZXRyeV9jNzc1NDkyMC1leHRlcm5hbC1vdXRib3g=\",\n            \"MD5OfBody\": \"8e1b7767791b260964a89ab9f1f74964\",\n            \"Body\": \"synthetic-p04-outbox\"\n        }\n    ]\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-outbox"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-outbox\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "delete-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic_retry_c7754920-external-outbox",
+      "receipt_handle": "ZjQ1NjdlMTEtNmFmZi00OTY1LTg1NDItMDYzY2VhNzExYTI2IDA3NGNjNWIxLTFlMjAtNGNlNC1hMzE2LWUxODk1OWQxZGJhZCBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpY19yZXRyeV9jNzc1NDkyMC1leHRlcm5hbC1vdXRib3g="
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-before_provider"
+              },
+              "status": {
+                "S": "PENDING"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-before_provider-outbox"
+              },
+              "status": {
+                "S": "UNSENT"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_provider"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_provider\"\n        },\n        \"status\": {\n            \"S\": \"PENDING\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_provider"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "PENDING"
+        },
+        ":new": {
+          "S": "UNKNOWN"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_provider"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_provider\"\n        },\n        \"status\": {\n            \"S\": \"UNKNOWN\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_provider"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_provider\"\n        },\n        \"status\": {\n            \"S\": \"UNKNOWN\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_provider"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_provider\"\n        },\n        \"status\": {\n            \"S\": \"UNKNOWN\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-before_local_result"
+              },
+              "status": {
+                "S": "PENDING"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-before_local_result-outbox"
+              },
+              "status": {
+                "S": "UNSENT"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"PENDING\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_local_result\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_local_result"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "PENDING"
+        },
+        ":new": {
+          "S": "UNKNOWN"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"UNKNOWN\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_local_result\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"UNKNOWN\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_local_result\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_local_result"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "UNKNOWN"
+        },
+        ":new": {
+          "S": "SUCCEEDED"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-before_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        },\n        \"pk\": {\n            \"S\": \"synthetic-p04-before_local_result\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-after_local_result"
+              },
+              "status": {
+                "S": "PENDING"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "synthetic-p04-after_local_result-outbox"
+              },
+              "status": {
+                "S": "UNSENT"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-after_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-after_local_result\"\n        },\n        \"status\": {\n            \"S\": \"PENDING\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-after_local_result"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "PENDING"
+        },
+        ":new": {
+          "S": "UNKNOWN"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "update-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-after_local_result"
+        }
+      },
+      "update_expression": "SET #s = :new",
+      "condition_expression": "#s = :old",
+      "expression_attribute_names": {
+        "#s": "status"
+      },
+      "expression_attribute_values": {
+        ":old": {
+          "S": "UNKNOWN"
+        },
+        ":new": {
+          "S": "SUCCEEDED"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-after_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-after_local_result\"\n        },\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-after_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-after_local_result\"\n        },\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "synthetic-p04-after_local_result"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"synthetic-p04-after_local_result\"\n        },\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "put-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "item": {
+        "pk": {
+          "S": "P05-operation"
+        },
+        "status": {
+          "S": "PENDING"
+        }
+      }
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P05-event-synthetic-1"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P05-operation"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"PENDING\"\n        },\n        \"pk\": {\n            \"S\": \"P05-operation\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "P05-event-synthetic-1"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Update": {
+            "TableName": "synthetic_retry_c7754920",
+            "Key": {
+              "pk": {
+                "S": "P05-operation"
+              }
+            },
+            "UpdateExpression": "SET #s = :next",
+            "ConditionExpression": "#s = :current",
+            "ExpressionAttributeNames": {
+              "#s": "status"
+            },
+            "ExpressionAttributeValues": {
+              ":next": {
+                "S": "SUCCEEDED"
+              },
+              ":current": {
+                "S": "PENDING"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P05-event-synthetic-1"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"pk\": {\n            \"S\": \"P05-event-synthetic-1\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P05-event-synthetic-2"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P05-operation"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        },\n        \"pk\": {\n            \"S\": \"P05-operation\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "transact-write-items",
+    "input": {
+      "transact_items": [
+        {
+          "Put": {
+            "TableName": "synthetic_retry_c7754920",
+            "Item": {
+              "pk": {
+                "S": "P05-event-synthetic-2"
+              }
+            },
+            "ConditionExpression": "attribute_not_exists(pk)"
+          }
+        },
+        {
+          "Update": {
+            "TableName": "synthetic_retry_c7754920",
+            "Key": {
+              "pk": {
+                "S": "P05-operation"
+              }
+            },
+            "UpdateExpression": "SET #s = :next",
+            "ConditionExpression": "#s = :current",
+            "ExpressionAttributeNames": {
+              "#s": "status"
+            },
+            "ExpressionAttributeValues": {
+              ":next": {
+                "S": "SUCCEEDED"
+              },
+              ":current": {
+                "S": "SUCCEEDED"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  },
+  {
+    "service": "dynamodb",
+    "operation": "get-item",
+    "input": {
+      "table_name": "synthetic_retry_c7754920",
+      "key": {
+        "pk": {
+          "S": "P05-operation"
+        }
+      },
+      "consistent_read": true
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Item\": {\n        \"status\": {\n            \"S\": \"SUCCEEDED\"\n        },\n        \"pk\": {\n            \"S\": \"P05-operation\"\n        }\n    }\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "send-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "message_body": "synthetic-p02",
+      "message_group_id": "synthetic-group",
+      "message_deduplication_id": "synthetic-stable-key"
+    },
+    "exit_code": 0,
+    "output": "{\n    \"MD5OfMessageBody\": \"368c4840b316f0ed3cb8b03bbffc8fd5\",\n    \"MessageId\": \"c673cfe7-f8a7-47a1-b1cf-c33c7a0cede6\",\n    \"SequenceNumber\": \"10000000000000000002\"\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "receive-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "wait_time_seconds": 5,
+      "max_number_of_messages": 1
+    },
+    "exit_code": 0,
+    "output": "{\n    \"Messages\": [\n        {\n            \"MessageId\": \"c673cfe7-f8a7-47a1-b1cf-c33c7a0cede6\",\n            \"ReceiptHandle\": \"ZDczYjM4ZTItZGZjYS00NmM5LWJlMGMtN2M3NWZlMzVmZTQ0IDBiMzdjZjhhLTRhNTUtNDJiYy1hMzFlLTY2ZTA5NmJkZTcxNyBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpYy1maWZvLWM3NzU0OTIwLmZpZm8=\",\n            \"MD5OfBody\": \"368c4840b316f0ed3cb8b03bbffc8fd5\",\n            \"Body\": \"synthetic-p02\"\n        }\n    ]\n}\n",
+    "error": ""
+  },
+  {
+    "service": "sqs",
+    "operation": "delete-message",
+    "input": {
+      "queue_url": "https://127.0.0.1:9297/000000000000/synthetic-fifo-c7754920.fifo",
+      "receipt_handle": "ZDczYjM4ZTItZGZjYS00NmM5LWJlMGMtN2M3NWZlMzVmZTQ0IDBiMzdjZjhhLTRhNTUtNDJiYy1hMzFlLTY2ZTA5NmJkZTcxNyBhcm46YXdzOnNxczp1cy1lYXN0LTE6MDAwMDAwMDAwMDAwOnN5bnRoZXRpYy1maWZvLWM3NzU0OTIwLmZpZm8="
+    },
+    "exit_code": 0,
+    "output": "",
+    "error": ""
+  }
+]

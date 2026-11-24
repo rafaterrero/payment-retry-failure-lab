@@ -1,0 +1,16 @@
+{
+  "naive": {
+    "attempts": 2,
+    "charges": 2
+  },
+  "guarded": {
+    "attempts": 2,
+    "charges": 1,
+    "state": "SUCCEEDED"
+  },
+  "recovery": {
+    "attempts": 2,
+    "charges": 1,
+    "state": "SUCCEEDED"
+  }
+}

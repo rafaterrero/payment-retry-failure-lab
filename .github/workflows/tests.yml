@@ -1,0 +1,17 @@
+name: deterministic-tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -v
+      - run: python3 scripts/privacy_check.py
+      - run: cd evidence && sha256sum -c SHA256SUMS
+      - run: python3 -m payment_failure_lab.experiments --output reports/results.json
+      - run: cmp evidence/results.json reports/results.json
