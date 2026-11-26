@@ -13,6 +13,16 @@ The project combines two independently testable layers:
 - **AWS Emulator 1.0.598:** local integration experiments exercising
   SQS, Lambda, and DynamoDB APIs with pinned execution evidence.
 
+  
+## Technical Article
+
+**The Payment Succeeded. The Worker Timed Out. The Retry Charged Again.**
+
+An engineering deep dive into payment retry safety, business-level idempotency, recovery after uncertain outcomes, and hands-on testing with AWS Emulator 1.0.598.
+
+[Read the full article on DEV.to](https://dev.to/rafaterrero/the-payment-succeeded-the-worker-timed-out-the-retry-charged-again-2892)
+
+
 ## Validated experiments
 
 | Experiment | What was tested |
